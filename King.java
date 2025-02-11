@@ -5,9 +5,11 @@ public class King {
     private static char column;
     private static char row;
 
-    King(){}
+    public King(){
+        //Empty Constructor
+    }
 
-    King(String pieceName, String color, char column, char row) {
+    public King(String pieceName, String color, char column, char row) {
         this.pieceName = pieceName;
         this.color = color;
         this.column = column;
@@ -15,27 +17,27 @@ public class King {
     }
 
     public static void setColumn(char initColumn) {
-        column = initColumn;
+        column = initColumn; //set new column position
     }
     public static void setRow(char initRow) {
-        row = initRow;
+        row = initRow; //set new row position
     }
 
     public static String getColor() {
-        return color;
+        return color; //get color of chess piece
     }
     public static char getColumn() {
-        return column;
+        return column; //get current column position
     }
     public static char getRow() {
-        return row;
+        return row; //get current row position
     }
     
     // Derek, Jonathan, Ugyen
     public static void verifyTarget(char toColumn, char toRow) {
         boolean print = (Math.abs(column - toColumn) == 1 && row == toRow) || 
                         (Math.abs(row - toRow) == 1 && column == toColumn) || 
-                        (Math.abs(column - toColumn) == 1 && Math.abs(row - toRow) == 1);
+                        (Math.abs(column - toColumn) == 1 && Math.abs(row - toRow) == 1); //The King can only move one square horizontally, vertically, or diagonally
         System.out.println(pieceName + " at " + column + row + (print ? " can " : " cannot ") + "move to " + toColumn + toRow);  
     }
 
