@@ -5,11 +5,11 @@ public class Pawn {
     private static char column;
     private static char row;
 
-    Pawn(){
+    public Pawn(){
         //Empty Constructor
     }
 
-    Pawn(String pieceName, String color, char column, char row) {
+    public Pawn(String pieceName, String color, char column, char row) {
         this.pieceName = pieceName;
         this.color = color;
         this.column = column;
