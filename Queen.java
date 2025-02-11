@@ -5,11 +5,11 @@ public class Queen {
     private static char column;
     private static char row;
 
-    Queen(){
+    public Queen(){
         //Empty Constructor
     }
 
-    Queen(String pieceName, String color, char column, char row) {
+    public Queen(String pieceName, String color, char column, char row) {
         this.pieceName = pieceName;
         this.color = color;
         this.column = column;
