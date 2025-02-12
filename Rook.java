@@ -1,40 +1,38 @@
 public class Rook {
-    private static String pieceName;
-    private static String color;
-    private static char column;
-    private static char row;
+    private String pieceName;
+    private String color;
+    private char column;
+    private char row;
 
-    public Rook(){
-        //Empty Constructor
-    }
+    Rook(){}
 
-    public Rook(String pieceName, String color, char column, char row) {
+    Rook(String pieceName, String color, char column, char row) {
         this.pieceName = pieceName;
         this.color = color;
         this.column = column;
         this.row = row;
     }
 
-    public static void setColumn(char initColumn) {
-        column = initColumn; //set new initial column after asking the user
+    public void setColumn(char initColumn) {
+        column = initColumn;
     }
-    public static void setRow(char initRow) {
-        row = initRow; //set new initial row after asking the user
+    public void setRow(char initRow) {
+        row = initRow;
     }
 
-    public static String getColor() {
-        return color; //Getter for color of chess piece
+    public String getColor() {
+        return color;
     }
-    public static char getColumn() {
-        return column; //Getter for column position of chess piece
+    public char getColumn() {
+        return column;
     }
-    public static char getRow() {
-        return row; //Getter for row position of chess piece
+    public char getRow() {
+        return row;
     }
     
     // Derek, Jonathan, Ugyen
-    public static void verifyTarget(char toColumn, char toRow) {
-        boolean print = (column == toColumn|| column == toRow); //The Rook can only move vertically or horizontally, with no limits on squares
+    public void verifyTarget(char toColumn, char toRow) {
+        boolean print = (column == toColumn|| row == toRow); 
         System.out.println(pieceName + " at " + column + row + (print ? " can " : " cannot ") + "move to " + toColumn + toRow);  
     }
 }
