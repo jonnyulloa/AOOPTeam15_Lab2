@@ -7,13 +7,10 @@
 //2/4/2025 Derek: Added comments explaining the methods
 // 1/24/25 Jonathan: Added file reader, user input, and outline for chess class and chess piece movments
 // 2/3/25 Jonathan: Simplified code
-// 2/9/25 Ugyen: Got on call with Derek and simplified the code.
-// 2/19/25 Ugyen: Worked on the classes and attributes for each piece.
-
 import java.util.Scanner;
 
 public class Team15_Lab2 {
-    static Scanner scanner = new Scanner(System.in);
+    static Scanner scanner;
     static String piece;
     static String pieceColor;
     static char initColumn;
@@ -25,28 +22,33 @@ public class Team15_Lab2 {
         // Derek, Jonathan, Ugyen
             //This section gives instructions for the user to follow
             //And it takes the input which it will check if its valid using our validPos method
- 
-            askForPiece();
-            switch (piece) {
-                case "King": // Derek, Ugyen
-                    King(String pieceName, String color, char column, char row)
-                    break;
-                case "Rook": // Derek, Ugyen
-                    break;
-                case "Pawn": // Derek, Jonathan
-                    break;
-                case "Knight": // Derek, Ugyen
-                case "Queen": // Jonathan, Ugyen
-                    break;
-                case "Bishop": // Derek, Jonathan
-                    break;
+            boolean checkFirst = true;
+            while (checkFirst) { 
+                scanner = new Scanner(System.in);
+                askForPiece();
+                askForColor();
+                askForInitPos();
+                askForToPos();
+                process();
+                boolean checkSecond = true;
+                char choice;
+                while (checkSecond) {
+                    System.out.println("Would you like to try another target position? y or n");
+                    choice = scanner.next().charAt(0);
+                    if (choice == 'y') {
+                        askForToPos();
+                        process();
+                    } else if (choice == 'n') {
+                        System.out.println("Would you like to try another chess piece? y or n");
+                        choice = scanner.next().charAt(0);
+                        if (choice == 'y') {
+                            checkSecond = false;
+                        } else if (choice == 'n') {
+                            System.exit(0);
+                        }
+                    }
+                }
             }
-
-            askForColor();
-            askForInitPos();
-            askForToPos();
-            
-            // scanner.close();
     }
 
     static void askForPiece() {
@@ -62,7 +64,7 @@ public class Team15_Lab2 {
     }
     static void askForColor() {
         while (true) {
-            System.out.println("Pick a piece color (e.g. White or Black: ");
+            System.out.println("Pick a piece color (e.g. White or Black): ");
             pieceColor = scanner.nextLine();
             if (!Chessboard.validColor(pieceColor)) {
                 System.out.println("That piece color is not valid. Try again.");
@@ -99,4 +101,34 @@ public class Team15_Lab2 {
             }
         }
     }
+
+    static void process() {
+        switch (piece.toUpperCase()) {
+            case "KING": // Derek, Ugyen
+                King king = new King(piece, pieceColor, initColumn, initRow);
+                king.verifyTarget(toColumn, toRow);
+                break;
+            case "ROOK": // Derek, Ugyen
+                Rook rook = new Rook(piece, pieceColor, initColumn, initRow);
+                rook.verifyTarget(toColumn, toRow);
+                break;
+            case "PAWN": // Derek, Jonathan
+                Pawn pawn = new Pawn(piece, pieceColor, initColumn, initRow);
+                pawn.verifyTarget(toColumn, toRow);
+                break;
+            case "KNIGHT": // Derek, Ugyen
+                Knight knight = new Knight(piece, pieceColor, initColumn, initRow);
+                knight.verifyTarget(toColumn, toRow);
+                break;
+            case "QUEEN": // Jonathan, Ugyen
+                Queen queen = new Queen(piece, pieceColor, initColumn, initRow);
+                queen.verifyTarget(toColumn, toRow);
+                break;
+            case "BISHOP": // Derek, Jonathan
+                Bishop bishop = new Bishop(piece, pieceColor, initColumn, initRow);
+                bishop.verifyTarget(toColumn, toRow);
+                break;
+        }
+    }
+
 }
