@@ -1,7 +1,7 @@
 // Derek
-class Chessboard {
-    static final char MAX_ROW = 8;
-    static final char MIN_ROW = 1;
+public class Chessboard {
+    static final char MAX_ROW = '8';
+    static final char MIN_ROW = '1';
 
     // Derek
     public static boolean withinChessboard(char column, char row) {
